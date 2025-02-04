@@ -7,57 +7,11 @@ const cookieNone = "Cookies : none";
 
 let count = 0;
 
-count = {
-    value : 0,
-    callbacks : [],
-    callbacksOne : [],
-    update : function(newValue){
-        this.value = newValue;
-        for (const callback of this.callbacks) {
-            switch (callback.flag) {
-                case "priority":
-                    threadstrat(callback.cb);
-                    break;
-            
-                default:
-                    callback.cb(this.value);
-                    break;
-            }
-        }
-
-    },
-    onChange : function(newCallback,flag){
-        switch (flag) {
-            case "priority-1":
-                this.callbacksOne.push({
-                    flag : flag, 
-                    cb : newCallback
-                });
-                
-                break;
-        
-            default:
-                this.callbacks.push(newCallback);
-                break;
-        }
-    }
-
-};
-
-count.onChange((count)=>{
-    document.getElementById('title').innerText = cookieTitleCount + count;
-});
-
-count.onChange((count)=>{
-    countDiv.innerText = count;
-});
-
-count.onChange((count)=>{
-    if (count >= 10) {
-        button.style.display = 'block';
-        button2.style.display = 'block';
-    }
-});
+ function addCookieUpdate(number){
+        count+=number;
+        countDiv.innerText = count;
+        document.getElementById('title').innerText = cookieTitleCount + count;
+ }
 
 if(count === 0){
     document.getElementById('title').innerText = cookieNone
@@ -66,11 +20,9 @@ if(count === 0){
 
 image.addEventListener('click', () => {
     image.classList.toggle('active');
-    //count += 1;
-    count.update(count+1);
-    //countDiv.innerText = count;
-    //document.getElementById('title').innerText = cookieTitleCount + count;
-    if (count >= 10) {
+    addCookieUpdate(1);
+    
+    if (count != 10) {
         button.style.display = 'block';
         button2.style.display = 'block';
     }
