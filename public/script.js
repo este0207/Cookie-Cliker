@@ -46,7 +46,6 @@ function updateRmCookie(nombre){
 
 if(count === 0){
     document.getElementById('title').innerText = cookieNone
-    
 }
 
 
@@ -80,7 +79,7 @@ button.addEventListener('click', () => {
         
         interval = setInterval(() => {
             image.click();
-            updateAddCookie(1);
+            updateAddCookie(0);
         }, 10000);
     }
     else if(count<10){
@@ -94,8 +93,8 @@ button2.addEventListener('click', () => {
         updateRmCookie(100)
         sec += 1.0;
         secDiv.innerText = sec +secTitle;
-        image.click();
         interval = setInterval(() => {
+            image.click();
             updateAddCookie(1);
         }, 1000);
     }
