@@ -57,24 +57,22 @@ image.addEventListener('click', () => {
 
 // 💞 - Bouton Bonus + Millisec 0.1
 button.addEventListener('click', () => {
-        sec = 0.1 ;
-        secDiv.innerText = secTitle + sec;
-    if (!interval) {
-        interval = setInterval(() => {
-            updateAddCookie(1);
-        }, 10000);
-    }
+    sec = 0.1 ;
+    secDiv.innerText = secTitle + sec;
+    setInterval(() => {
+        updateAddCookie(1);
+    }, 10000);
+
 });
 
 // 💞 - Bouton Bonus + Millisec 0.2
 button2.addEventListener('click', () => {
-        sec = 0.1 ;
-        secDiv.innerText = secTitle + sec;
-    if (!interval) {
-        interval = setInterval(() => {
-            updateAddCookie(1);
-        }, 1000);
-    }
+    sec = 0.1 ;
+    secDiv.innerText = secTitle + sec;
+    interval = setInterval(() => {
+        updateAddCookie(1);
+    }, 10000);
+    
 });
 
 
