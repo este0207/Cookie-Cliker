@@ -1,9 +1,10 @@
-* {
+/* * {
     border: 1px red solid;
-}
+} */
 
 body {
-    padding: 10px;
+    /* padding: 10px; */
+    background-color: #5990a8;
 }
 
 .main {
@@ -67,7 +68,7 @@ body {
 .main .container button {
     padding: 20px;
     border-radius: 30px;
-    
+    border: none ;
 }
 
 @media (max-width: 768px) {
