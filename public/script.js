@@ -73,19 +73,13 @@ image.addEventListener('click', () => {
 // 💞 - Bouton Bonus + Millisec 0.1
 
 button.addEventListener('click', () => {
-    if(count>=10){
-        updateRmCookie(10)
-        casebox.style.display = 'block'
         sec = 0.1 ;
         secDiv.innerText = secTitle + sec;
+    if (!interval) {
         interval = setInterval(() => {
             updateAddCookie(1);
         }, 10000);
     }
-    else if(count<10){
-        window.alert("Note Enough Cookies !");
-    }
-
 });
 
 // 💞 - Bouton Bonus + Millisec 0.2
