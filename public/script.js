@@ -6,7 +6,6 @@ const secDiv = document.getElementById('sec');
 const image = document.querySelector('.image');
 const button = document.querySelector('.container #add1');
 const button2 = document.querySelector('.container #add2');
-const casebox = document.querySelector('.case');
 // ----------------------------------------\\
 
 // -------Objets et Class-------------\\
@@ -24,7 +23,7 @@ const cookieNone = "Cookies : none";
 
 // ------Variables Globales----------\\
 let count = 0;
-let sec = 0;
+let sec = 0 
 let interval;
 let cps = 0; // Cookie Par Secondes
 
@@ -44,7 +43,11 @@ function updateRmCookie(nombre){
 }
 
 
+
 // 🚦- Début du jeu et checkup nécessaires
+
+
+
 if(count === 0){
     document.getElementById('title').innerText = cookieNone
     
@@ -73,21 +76,31 @@ image.addEventListener('click', () => {
 // 💞 - Bouton Bonus + Millisec 0.1
 
 button.addEventListener('click', () => {
-        sec = 0.1 ;
+    if(count>=10){
+        updateRmCookie(10)
+        sec += 1.0 ;
         secDiv.innerText = secTitle + sec;
-    if (!interval) {
         interval = setInterval(() => {
             updateAddCookie(1);
         }, 10000);
+    }
+    else if(count<10){
+        window.alert("Pas assez de Cookies !");
     }
 });
 
 // 💞 - Bouton Bonus + Millisec 0.2
 button2.addEventListener('click', () => {
-    sec = 0.1 ;
-    secDiv.innerText = secTitle + sec;
-    interval = setInterval(() => {
-        updateAddCookie(1);
-    }, 10000);
-    
+    if(count>=100){
+        updateRmCookie(100)
+        sec += 1.0 ;
+        secDiv.innerText = secTitle + sec;
+        interval = setInterval(() => {
+            updateAddCookie(1);
+        }, 1000);
+    }
+    else if(count<100){
+        window.alert("Pas assez de Cookies !");
+    }
 });
+
