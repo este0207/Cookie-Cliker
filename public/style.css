@@ -99,6 +99,7 @@ body {
 
 .buttons {
   gap: 10px;
+  padding-bottom: 20px;
 }
 
 .boutique {

@@ -45,6 +45,10 @@ let count = 0;
 let sec = 0.0;
 let interval;
 let cps = 0; // Cookie Par Secondes
+let image1 = document.getElementById("image1");
+let image2 = document.getElementById("image2");
+let image3 = document.getElementById("image3");
+let image4 = document.getElementById("image4");
 
 // ------------------------------------------\\
 
@@ -59,6 +63,23 @@ function updateRmCookie(nombre){
     count -= nombre;
     countDiv.innerText = count;
     document.getElementById('title').innerText = count + cookieTitleCount;
+}
+
+function updateBackground(){
+        document.body.style.backgroundColor = '#808080';
+        title.style.background = 'url(./images/stonetxt.jpg)';
+        main.style.background = 'url(./images/cave.png)';
+        main.style.backgroundRepeat = 'no-repeat'
+        main.style.backgroundPosition = 'center',
+        main.style.backgroundSize = 'cover',
+        container.style.background = 'url(./images/stonetxt.jpg)';
+}
+
+function updateTools(){
+        image1.setAttribute("src", "./images/stone-shovel.png")
+        image2.setAttribute("src", "./images/Stone-Axe.webp")
+        image3.setAttribute("src", "./images/Stone-Pickaxe.webp")
+        image4.setAttribute("src", "./images/Stone-Sword.webp")
 }
 
 // 🚦- Début du jeu et checkup nécessaires
@@ -158,11 +179,6 @@ button4.addEventListener('click', () => {
 // Stone World
 
 buttonDev.addEventListener('click', () => {
-        document.body.style.backgroundColor = '#808080';
-        title.style.background = 'url(./images/stonetxt.jpg)';
-        main.style.background = 'url(./images/cave.webp)';
-        main.style.backgroundRepeat = 'no-repeat'
-        main.style.backgroundPosition = 'center',
-        main.style.backgroundSize = 'cover',
-        container.style.background = 'url(./images/stonetxt.jpg)';
+        updateBackground();
+        updateTools();
 });
