@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cookie&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 body {
-    background-color: #5990a8;
+    background-color:#5990a8;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -14,6 +14,7 @@ body {
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
 }
 
 .main .cookie {
@@ -29,16 +30,17 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "VT323", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 40px;
-  color: white;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    color: white;
 }
 
 .main .cookie img {
     width: 100%;
+    cursor: pointer;
     transition: 0.25s;
-    padding: 40% 0 40% 0;
+    /* padding: 71% 0 71% 0; */
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222);
 }
@@ -49,7 +51,6 @@ body {
 
 .main .cookie input {
     text-align: center;
-    margin: 10px;
     border: none;
     border-radius: 30px;
     background-color: transparent;
@@ -59,10 +60,11 @@ body {
     font-style: normal;
     font-size: 25px;
     color: white;
+    margin: 0;
 }
 
 .main .cookie .image {
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,6 +93,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
+    padding-bottom: 0;
 }
 
 .buttons {
@@ -121,6 +125,7 @@ body {
   font-style: normal;
   font-size: 30px;
   color: rgb(0, 0, 0);
+  cursor: pointer;
 }
 
 .main .container .buttons button p{
@@ -131,6 +136,8 @@ body {
 
 .main .container .buttons button img{
   width: 100%;
+  -webkit-filter: drop-shadow(5px 5px 5px #2222229c);
+  filter: drop-shadow(5px 5px 5px #2222229c);
 }
 
 .case-title {
@@ -163,73 +170,45 @@ body {
   background-color: bisque;
 }
 
+#add2:hover {
+  background-color: rgb(255, 216, 169);
+}
+
 #add3 {
-  background-color: rgb(255, 202, 137);
+  background-color: rgb(254, 193, 119);
+}
+
+#add3:hover {
+  background-color: rgb(255, 185, 100);
 }
 
 #add4 {
   background-color:coral;
 }
 
-.inner-header {
-  height:65vh;
-  width:100%;
-  margin: 0;
-  padding: 0;
+#add4:hover {
+  background-color:rgb(255, 113, 61);
 }
 
-.flex { /*Flexbox for containers*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+#stone-world {
+    background: url(./images/stonetxt.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    color: white;
 }
 
-.waves {
-  min-height:100px;
+#stone-world:hover {
+      filter: contrast(1.3);
 }
 
-.content {
-  position:relative;
-  height:20vh;
-  text-align:center;
-  background-color: white;
-}
-
-/* Animation */
-
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
-}
-.parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 7s;
-}
-.parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 10s;
-}
-.parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-.parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-@keyframes move-forever {
-  0% {
-   transform: translate3d(-90px,0,0);
-  }
-  100% { 
-    transform: translate3d(85px,0,0);
-  }
-}
 
 @media (max-width: 768px) {
     
     body {
-      overflow: scroll;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
   
     .main {
@@ -245,5 +224,9 @@ body {
     }
     h1 {
       font-size:24px;
+    }
+
+    .main .cookie img {
+      padding: 50% 0 50% 0;
     }
 }
