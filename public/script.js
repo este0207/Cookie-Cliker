@@ -15,7 +15,7 @@ let allButtons = [
 ];
 // ----------------------------------------\\
 // ------Constantes Strings---------\\
-const secTitle = "🍪 - par seconde : ";
+const secTitle = "🍪/s";
 const cookieTitleCount = " Cookies - Cookie-Cliker";
 const cookieNone = "Cookies : none";
 // -----------------------------------------\\
@@ -23,7 +23,7 @@ const cookieNone = "Cookies : none";
 
 // ------Variables Globales----------\\
 let count = 0;
-let sec = 0 
+let sec = 0.0;
 let interval;
 let cps = 0; // Cookie Par Secondes
 
@@ -42,16 +42,13 @@ function updateRmCookie(nombre){
     document.getElementById('title').innerText = count + cookieTitleCount;
 }
 
-
-
 // 🚦- Début du jeu et checkup nécessaires
-
-
 
 if(count === 0){
     document.getElementById('title').innerText = cookieNone
     
 }
+
 
 // Switch pour les prix des améliorations
 switch(count){
@@ -78,9 +75,11 @@ image.addEventListener('click', () => {
 button.addEventListener('click', () => {
     if(count>=10){
         updateRmCookie(10)
-        sec += 1.0 ;
-        secDiv.innerText = secTitle + sec;
+        sec += 0.1;
+        secDiv.innerText = sec +secTitle;
+        
         interval = setInterval(() => {
+            image.click();
             updateAddCookie(1);
         }, 10000);
     }
@@ -93,8 +92,9 @@ button.addEventListener('click', () => {
 button2.addEventListener('click', () => {
     if(count>=100){
         updateRmCookie(100)
-        sec += 1.0 ;
-        secDiv.innerText = secTitle + sec;
+        sec += 1.0;
+        secDiv.innerText = sec +secTitle;
+        image.click();
         interval = setInterval(() => {
             updateAddCookie(1);
         }, 1000);
@@ -103,4 +103,9 @@ button2.addEventListener('click', () => {
         window.alert("Pas assez de Cookies !");
     }
 });
+
+if(sec === 0.30000000000000004){
+    sec-=0.00000000000000004;
+}
+
 

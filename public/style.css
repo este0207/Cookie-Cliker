@@ -1,11 +1,12 @@
 /* * {
     border: 1px red solid;
 } */
-
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 body {
     /* padding: 10px; */
     background-color: #5990a8;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .main {
@@ -25,12 +26,12 @@ body {
 
 .main .cookie img {
     width: 100%;
-    transition: 1s;
+    transition: 0.25s;
     padding: 51% 0 51% 0;
 }
 
 .image.active img{
-    transform: scale(0.9);
+    transform: scale(0.8);
 }
 
 .main .cookie input {
