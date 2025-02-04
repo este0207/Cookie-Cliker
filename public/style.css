@@ -68,6 +68,10 @@ body {
     border-left: 2px #000000 solid;
 }
 
+.buttons {
+  gap: 10px;
+}
+
 .boutique {
   text-align: center;
   background: linear-gradient(#000000, #6767677f);
@@ -75,13 +79,41 @@ body {
   border: 2px #000000 solid;
 }
 
-.main .container button {
-    padding: 20px;
-    border: none;
+.main .container .buttons button {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr;
+  padding: 20px;
+  border-bottom: 1px rgba(99, 99, 99, 0.651) solid;
+  align-items: center;
+  font-size: 20px;
+  box-shadow: 10px 10px 10px black;
 }
 
-.main .container button:hover {
-  background-color: white;
+.main .container .buttons button p{
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.main .container .buttons button img{
+  width: 50%;
+}
+
+.case-title {
+  border: 2px #000000 solid;
+}
+
+.add .conter .case {
+  display: none;
+  padding: 10%;
+  background-color: aqua;
+  align-items: center;
+  gap: 10px;
+  border: 1px black solid;
+}
+
+.add .conter .case img{
+  width: 10%;
 }
 
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
@@ -171,22 +203,25 @@ p {
     transform: translate3d(85px,0,0);
   }
 }
-/*Shrinking for mobile*/
-@media (max-width: 768px) {
-  .content {
-    height:30vh;
-  }
-  h1 {
-    font-size:24px;
-  }
-}
 
 @media (max-width: 768px) {
+    
+    body {
+      overflow: scroll;
+    }
+  
     .main {
         grid-template-columns: 1fr;
     }
 
     .main .cookie {
         padding: 0;
+    }
+
+    .content {
+      height:30vh;
+    }
+    h1 {
+      font-size:24px;
     }
 }
