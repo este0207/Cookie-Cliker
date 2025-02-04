@@ -38,7 +38,8 @@ if(count === 0){
 
 // Attendre que count > a 10 pour afficher button
 if (count < 10) {
-    button.style.display = 'none';
+    button.style.background = 'gray';
+    button2.style.background = 'gray';
 }
 
 
@@ -50,31 +51,29 @@ image.addEventListener('click', () => {
     image.classList.toggle('active');
     updateAddCookie(1);
     if (count >= 15) {
-        button.style.display = 'block';
-        button2.style.display = 'block';
+        button.style.background = 'white';
+        button2.style.background = 'white';
     }
 });
 
 // 💞 - Bouton Bonus + Millisec 0.1
 button.addEventListener('click', () => {
-        sec = 0.1 ;
-        secDiv.innerText = secTitle + sec;
-    if (!interval) {
-        interval = setInterval(() => {
-            updateAddCookie(1);
-        }, 10000);
-    }
+    sec = 0.1 ;
+    secDiv.innerText = secTitle + sec;
+    setInterval(() => {
+        updateAddCookie(1);
+    }, 10000);
+
 });
 
 // 💞 - Bouton Bonus + Millisec 0.2
 button2.addEventListener('click', () => {
-        sec = 0.1 ;
-        secDiv.innerText = secTitle + sec;
-    if (!interval) {
-        interval = setInterval(() => {
-            updateAddCookie(1);
-        }, 1000);
-    }
+    sec = 0.1 ;
+    secDiv.innerText = secTitle + sec;
+    interval = setInterval(() => {
+        updateAddCookie(1);
+    }, 10000);
+    
 });
 
 
