@@ -12,10 +12,15 @@ const countDiv = document.getElementById('count');
 const secDiv = document.getElementById('sec');
 
 // Text :
-const text1 = document.getElementById('text1')
-const text2 = document.getElementById('text2')
-const text3 = document.getElementById('text3')
-const text4 = document.getElementById('text4')
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+const text4 = document.getElementById('text4');
+// Text Power
+const power1 = document.getElementById('power1');
+const power2 = document.getElementById('power2');
+const power3 = document.getElementById('power3');
+const power4 = document.getElementById('power4');
 
 // Images :
 const image = document.querySelector('.image');
@@ -45,23 +50,24 @@ const cookieNone = "Cookies : none";
 // -------Variables Objets et Class-------------\\
 
 // Amélioration Outils prix
+
 let shovelPrice = 10;
 let axePrice = 100; 
 let pickaxePrice = 500; 
 let swordPrice = 1000;
 
 // Amélioration Cookies/s 
-let shovelPower = 1; // shovel 1
-let axePower = 2; // axe 2
-let pickaxePower = 5; // Pickaxe 5
-let swordPower = 15; // sword  15
+let shovelPower = 1; 
+let axePower = 12; 
+let pickaxePower = 77;
+let swordPower = 160;
 
 // Amélioration Niveau prix
-let cavePrice = 15000;
-let mine1Price = 30000;
-let mine2Price = 120000;
-let filonMinePrice = 240000;
-let netherPrice= 480000;
+let cavePrice = 300000;
+let mine1Price = 1200000;
+let mine2Price = 2400000;
+let filonMinePrice = 4800000;
+let netherPrice= 9600000;
 
 
 // Boolean Activé ou non pour les améliorations
@@ -128,6 +134,15 @@ function updatePrice(){
     text3.innerText = pickaxePrice + cookieEmoji;
     text4.innerText = swordPrice + cookieEmoji;
 }
+function updatePower(){
+    power1.innerText = shovelPower + secTitle;
+    power2.innerText = axePower + secTitle;
+    power3.innerText = pickaxePower + secTitle;
+    power4.innerText = swordPower + secTitle;
+}
+
+
+
 
 // 🚦- Début du jeu et checkup nécessaires
 
@@ -150,7 +165,9 @@ switch(count){
 };
 
 // 🧪 -  Main Et Fonctions principales du jeu :
+updateAddCookie(0);
 updatePrice();
+updatePower()
 
 
 
@@ -252,13 +269,13 @@ buttonWorld.addEventListener('click', () => {
                 axePower*=2;
                 pickaxePower*=2;
                 swordPower*=2;
-
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
                   // Update visuel
                 updateBackground();
                 updateTools();
                 updatePrice();
+                updatePower()
             }
             else{
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
