@@ -191,7 +191,7 @@ body {
   background-color:rgb(255, 113, 61);
 }
 
-#stone-world {
+#levelup {
     background: url(./images/stonetxt.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -200,7 +200,7 @@ body {
     color: white;
 }
 
-#stone-world:hover {
+#levelup:hover {
       filter: contrast(1.3);
 }
 
