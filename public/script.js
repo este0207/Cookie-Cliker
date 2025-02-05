@@ -10,11 +10,19 @@
 // ------Constantes HTML--------\\
 const countDiv = document.getElementById('count');
 const secDiv = document.getElementById('sec');
+
+// Text :
+const text1 = document.getElementById('text1')
+const text2 = document.getElementById('text2')
+const text3 = document.getElementById('text3')
+const text4 = document.getElementById('text4')
+
+// Images :
 const image = document.querySelector('.image');
-let image1 = document.getElementById("image1");
-let image2 = document.getElementById("image2");
-let image3 = document.getElementById("image3");
-let image4 = document.getElementById("image4");
+const image1 = document.getElementById("image1");
+const image2 = document.getElementById("image2");
+const image3 = document.getElementById("image3");
+const image4 = document.getElementById("image4");
 // Buttons :
 const button = document.querySelector('.container #add1');
 const button2 = document.querySelector('.container #add2');
@@ -27,6 +35,7 @@ const container = document.querySelector('.main .container'); // divs pour Front
 
 // ------Constantes Strings---------\\
 const secTitle = "🍪/s";
+const cookieEmoji = "🍪";
 const cookieTitleCount = " Cookies - Cookie-Cliker";
 const cookieNone = "Cookies : none";
 // ----------------------------------------\\
@@ -113,6 +122,12 @@ function updateTools(){
     image3.setAttribute("src", "./images/Stone-Pickaxe.webp")
     image4.setAttribute("src", "./images/Stone-Sword.webp")
 }
+function updatePrice(){
+    text1.innerText = shovelPrice + cookieEmoji;
+    text2.innerText = axePrice + cookieEmoji;
+    text3.innerText = pickaxePrice + cookieEmoji;
+    text4.innerText = swordPrice + cookieEmoji;
+}
 
 // 🚦- Début du jeu et checkup nécessaires
 
@@ -135,7 +150,7 @@ switch(count){
 };
 
 // 🧪 -  Main Et Fonctions principales du jeu :
-
+updatePrice();
 
 
 
@@ -151,11 +166,11 @@ button.addEventListener('click', () => {
     if(count>=shovelPrice){ // Si Nombre de Cookies est supérieur ou égal au prix du bouton
         shovel = true;
         updateRmCookie(shovelPrice)
-        sec += 1.0;
+        sec += shovelPower;
         secDiv.innerText = sec +secTitle;
         interval = setInterval(() => {
             image.click();
-            updateAddCookie(0);
+            updateAddCookie(shovelPower-1);
         }, 1000);
     }
     else if(count<shovelPrice){
@@ -168,11 +183,11 @@ button2.addEventListener('click', () => {
     if(count>=axePrice){
         axe = true;
         updateRmCookie(axePrice)
-        sec += 2.0;
+        sec += axePower;
         secDiv.innerText = sec +secTitle;
         interval = setInterval(() => {
             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
-            updateAddCookie(1);// [2] - Ajouter 1 cookies pour Matcher avec la Valeur de Sec (1+1=2)
+            updateAddCookie(axePower-1);// [2] - Ajouter 1 cookies pour Matcher avec la Valeur de Sec (1+1=2)
         }, 1000);
     }
     else if(count<axePrice){
@@ -185,11 +200,11 @@ button3.addEventListener('click', () => {
     if(count>=pickaxePrice){
         pickaxe = true;
         updateRmCookie(pickaxePrice)
-        sec += 5.0;
+        sec += pickaxePower;
         secDiv.innerText = sec +secTitle;
         interval = setInterval(() => {
             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
-            updateAddCookie(4); // [2] - Ajouter 4 cookies pour Matcher avec la Valeur de Sec (1+4=5)
+            updateAddCookie(pickaxePower-1); // [2] - Ajouter 4 cookies pour Matcher avec la Valeur de Sec (1+4=5)
         }, 1000);
     }
     else if(count<pickaxePrice){
@@ -202,11 +217,11 @@ button4.addEventListener('click', () => {
     if(count>=swordPrice){
         sword = true;
         updateRmCookie(swordPrice)
-        sec += 15.0;
-        secDiv.innerText = sec +secTitle;
+        sec += swordPower;
+        secDiv.innerText = sec + secTitle;
         interval = setInterval(() => {
             image.click();  // [1] - ANIMATION ET +1 AU COMPTEUR
-            updateAddCookie(14); // [2] - Ajouter 14 cookies pour Matcher avec la Valeur de Sec (1+14=15)
+            updateAddCookie(swordPower-1); // [2] - Ajouter 14 cookies pour Matcher avec la Valeur de Sec (1+14=15)
         }, 1000);
     }
     else if(count<swordPrice){
@@ -222,28 +237,28 @@ buttonWorld.addEventListener('click', () => {
     if(caveBool === false && mine1Bool === false && mine2Bool === false && filonMineBool === false){
         if(count>=cavePrice){
             if(shovel && axe && pickaxe && sword === true){
-                caveBool=false;
-
+                // caveBool=false;
                 shovel=false;
                 axe=false;
                 pickaxe=false;
                 sword=false;
+                // Change Price Outils
+                shovelPrice*=2;
+                axePrice*=2;
+                pickaxePrice*=2;
+                swordPrice*=2;
+                // x2 sur les gains des outils !! :
+                shovelPower*=2;
+                axePower*=2;
+                pickaxePower*=2;
+                swordPower*=2;
 
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
-                // Update visuel
+                  // Update visuel
                 updateBackground();
                 updateTools();
-                // Change Price Outils
-                shovelPrice*2;
-                axePrice*2;
-                pickaxePrice*2;
-                swordPrice*2;
-                // x2 sur les gains des outils !! :
-                shovelPower*2;
-                axePower*2;
-                pickaxePower*2;
-                swordPower*2;
+                updatePrice();
             }
             else{
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
