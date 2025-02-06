@@ -27,10 +27,10 @@ const image2 = document.getElementById("image2");
 const image3 = document.getElementById("image3");
 const image4 = document.getElementById("image4");
 // Buttons :
-const button = document.querySelector('.container #add1');
-const button2 = document.querySelector('.container #add2');
-const button3 = document.querySelector('.container #add3');
-const button4 = document.querySelector('.container #add4');
+const buyShovelButton = document.querySelector('.container #add1');
+const buyAxeButton = document.querySelector('.container #add2');
+const buyPickaxeButton = document.querySelector('.container #add3');
+const buySwordButton = document.querySelector('.container #add4');
 const buttonWorld = document.querySelector('.container #levelup'); 
 
 const main = document.querySelector('.main .cookie'); // divs pour Front End
@@ -247,26 +247,26 @@ function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS
     for (let i = 0; i != toolsCount.shovel; i++) {
         toolsCount.shovel -= 1;  //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         sec-=shovelPower;
-        button.click(); 
+        buyShovelButton.click(); 
         console.log("Clique sur bouton 1")
     }
     for (let i = 0; i != toolsCount.axe; i++) {
         toolsCount.axe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         sec-=axePower;
-        button2.click();
+        buyAxeButton.click();
         console.log("Clique sur bouton 2")
     }
     for (let i = 0; i != toolsCount.pickaxe; i++) {
         // tools.pickaxes.lenght 
         toolsCount.pickaxe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         sec-=pickaxePower;
-        button3.click(); 
+        buyPickaxeButton.click(); 
         console.log("Clique sur bouton 3")
     }
     for (let i = 0; i != toolsCount.sword; i++) {
         toolsCount.sword -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         sec-=swordPower;
-        button4.click(); 
+        buySwordButton.click(); 
         console.log("Clique sur bouton 4")
     }
 
@@ -298,10 +298,10 @@ function onStart(){
 
 // switch(count){
 //     case count<10:
-//         button.style.background = 'gray';
+//         buyShovelButton.style.background = 'gray';
 //         button2.style.background = 'gray';
 //     case count === 10:
-//         button.style.background = 'white';
+//         buyShovelButton.style.background = 'white';
 //     case count === 100:
 //         button2.style.background = 'white';
 // };
@@ -321,7 +321,7 @@ image.addEventListener('click', () => {
 });
 
 // 💞 - Bouton Bonus +1/s
-button.addEventListener('click', () => {
+buyShovelButton.addEventListener('click', () => {
     if(count>=shovelPrice){ // Si Nombre de Cookies est supérieur ou égal au prix du bouton
         shovel = true;
         updateRmCookie(shovelPrice)
@@ -339,7 +339,7 @@ button.addEventListener('click', () => {
 });
 
 // 💞 - Bouton Bonus +2/s
-button2.addEventListener('click', () => {
+buyAxeButton.addEventListener('click', () => {
     if(count>=axePrice){
         axe = true;
         updateRmCookie(axePrice)
@@ -357,7 +357,7 @@ button2.addEventListener('click', () => {
 });
 
 // 💞 - Bouton Bonus +5/s
-button3.addEventListener('click', () => {
+buyPickaxeButton.addEventListener('click', () => {
     if(count>=pickaxePrice){
         pickaxe = true;
         updateRmCookie(pickaxePrice)
@@ -375,7 +375,7 @@ button3.addEventListener('click', () => {
 });
 
 // 💞 - Bouton Bonus +15/s
-button4.addEventListener('click', () => {
+buySwordButton.addEventListener('click', () => {
     if(count>=swordPrice){
         sword = true;
         updateRmCookie(swordPrice)
