@@ -3,7 +3,6 @@
 // LANGUE : FRANCAIS ANGLAIS / FR / EN (0 IA UTILISEE ON EST JUSTE BILINGUE)
 
 
-
 //  🗒️ - Constantes du Code : 
 
 
@@ -21,7 +20,6 @@ const power1 = document.getElementById('power1');
 const power2 = document.getElementById('power2');
 const power3 = document.getElementById('power3');
 const power4 = document.getElementById('power4');
-
 // Images :
 const image = document.querySelector('.image');
 const image1 = document.getElementById("image1");
@@ -44,7 +42,6 @@ const cookieEmoji = "🍪";
 const cookieTitleCount = " Cookies - Cookie-Cliker";
 const cookieNone = "Cookies : none";
 // ----------------------------------------\\
-
 
 
 // -------Variables Objets et Class-------------\\
@@ -94,37 +91,31 @@ let toolsCount = {
 // ----------------------------------------\\
 
 
-
-
 // ------Variables Globales----------\\
 let count; // COMPTEUR DES COOKIES
 let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
-// --------Variables Unité De compatage-------\
-
-
-// let cps = 0; // Clique par seconde
-
-// ------------------------------------------\\
-
 
 // --- Fonctions GagneTemps --- \\
+
+ // VISUEL
+
 
 function updateAddCookie(nombre) { // Ajoute un Nombre de Cookie et Update le compteur
     let displayCount;
     count+=nombre;
-    if (count >= 10000000) {
+    if (count >= 10000000) { // MILLIARDS
         let millions = Math.floor(count / 10000000); 
         let temp = Math.floor((count % 10000000) / 100000); 
         displayCount = millions + "Md" + temp; 
     } 
-    else if (count >= 1000000) {
+    else if (count >= 1000000) { // MILLIONS
         let millions = Math.floor(count / 1000000); 
         let temp = Math.floor((count % 1000000) / 10000); 
         displayCount = millions + "M" + temp; 
     } 
-    else if(count<999999){
+    else if(count<999999){ // BASIC
         displayCount = count; 
     }
     countDiv.innerText = displayCount; 
@@ -135,17 +126,17 @@ function updateAddCookie(nombre) { // Ajoute un Nombre de Cookie et Update le co
 function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
     let displayCount;
     count-=nombre;
-    if (count >= 10000000) {
+    if (count >= 10000000) { // MILLIARDS
         let milliard = Math.floor(count / 10000000); 
         let reste = Math.floor((count % 10000000) / 100000); 
         displayCount = milliard + "Md" + reste; 
     } 
-    else if (count >= 1000000) {
+    else if (count >= 1000000) { // MILLIONS
         let millions = Math.floor(count / 1000000); 
         let reste = Math.floor((count % 1000000) / 10000); 
         displayCount = millions + "M" + reste; 
     } 
-    else if(count<999999){
+    else if(count<999999){ // Basic
         displayCount = count; 
     }
     countDiv.innerText = displayCount; 
@@ -153,8 +144,7 @@ function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le comp
     saveProgression();
 }
 
-
-function updateBackground(){
+function updateBackground(){ // UPDATE SHOP, COOKIE BG, TEXT
     document.body.style.backgroundColor = '#808080';
     title.style.background = 'url(./images/stonetxt.jpg)';
     main.style.background = 'url(./images/cave.png)';
@@ -164,26 +154,26 @@ function updateBackground(){
     container.style.background = 'url(./images/stonetxt.jpg)';
 }
 
-function updateTools(){
+function updateTools(){ // UPDATE TOOLS VISUAL
     image1.setAttribute("src", "./images/stone-shovel.png")
     image2.setAttribute("src", "./images/Stone-Axe.webp")
     image3.setAttribute("src", "./images/Stone-Pickaxe.webp")
     image4.setAttribute("src", "./images/Stone-Sword.webp")
 }
-function updatePrice(){
+function updatePrice(){ // UPDATE PRICE OF TOOLS
     text1.innerText = shovelPrice + cookieEmoji;
     text2.innerText = axePrice + cookieEmoji;
     text3.innerText = pickaxePrice + cookieEmoji;
     text4.innerText = swordPrice + cookieEmoji;
 }
-function updatePower(){
+function updatePower(){ // UPDATE POWER OF TOOLS /S
     power1.innerText = shovelPower + secTitle;
     power2.innerText = axePower + secTitle;
     power3.innerText = pickaxePower + secTitle;
     power4.innerText = swordPower + secTitle;
 }
 
-function saveProgression() { // SAVE LA PROGRESSION
+function saveProgression() { // SAVE LA PROGRESSION ⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️ A ENCAPSULER  // JSON
     localStorage.setItem('cookieSec', sec);
     localStorage.setItem('cookieCount', count);
     localStorage.setItem('toolsCount.shovel', toolsCount.shovel);
@@ -207,7 +197,10 @@ function saveProgression() { // SAVE LA PROGRESSION
     localStorage.setItem('mine2Bool', mine2Bool);
     localStorage.setItem('filonMineBool', filonMineBool);
 }
-function loadSave() { // LOAD SAUVEGARDE
+function loadSave() { // LOAD SAUVEGARDE ⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️ A ENCAPSULER  // JSON
+    // Pattern pour les INT :
+    // variable = parseInt(localStorage.getitem('nomItem), Base de comptage || Valeur de base souhaitée); // valeur de base = null
+    sec = parseInt(localStorage.getItem('cookieSec'), 10) || 0;
     count = parseInt(localStorage.getItem('cookieCount'), 10) || 0;
     toolsCount.shovel = parseInt(localStorage.getItem('toolsCount.shovel'), 10) || 0;
     toolsCount.axe = parseInt(localStorage.getItem('toolsCount.axe'), 10) || 0;
@@ -221,6 +214,9 @@ function loadSave() { // LOAD SAUVEGARDE
     axePower = parseInt(localStorage.getItem('axePower'), 10) || 12;
     pickaxePower = parseInt(localStorage.getItem('pickaxePower'), 10) || 77;
     swordPower = parseInt(localStorage.getItem('swordPower'), 10) || 160;
+
+    // Pattern pour les Bools :
+    // variable = localStorage.getitem('nomItem), VALEUR SOUHAITE || Valeur de base souhaitée // valeur de base = null
     shovel = localStorage.getItem('shovel') === 'true' || false;
     axe = localStorage.getItem('axe') === 'true' || false;
     pickaxe = localStorage.getItem('pickaxe') === 'true' || false;
@@ -230,39 +226,48 @@ function loadSave() { // LOAD SAUVEGARDE
     mine2Bool = localStorage.getItem('mine2Bool') === 'true' || false;
     filonMineBool = localStorage.getItem('filonMineBool') === 'true' || false;
 }
-function retrieveTools() {
+
+function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS 
+    // DECLA DES VARIABLES TOOLS TEMPORAIRES
     let s;
     let a;
     let p;
     let sw;
     let total;
+    // MULTIPLICATION DU COUT EN COOKIES
     s = toolsCount.shovel * shovelPrice;
     a = toolsCount.axe * axePrice;
     p = toolsCount.pickaxe * pickaxePrice;
     sw = toolsCount.sword * swordPrice;
+    // TOTAL DES OUTILS EN COOKIES
     total = s + a + p + sw; 
+    // AJOUTER A LA BALANCE "TEMPORAIREMENT"
     count += total;
+    // SERIES DE BOUCLES FOR POUR SIMULER DES CLIQUES SUR LES BOUTONS
     for (let i = 0; i != toolsCount.shovel; i++) {
-        toolsCount.shovel -= 1;
+        toolsCount.shovel -= 1;  //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         button.click(); 
         console.log("Clique sur bouton 1")
     }
     for (let i = 0; i != toolsCount.axe; i++) {
-        toolsCount.axe -= 1;
+        toolsCount.axe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         button2.click();
         console.log("Clique sur bouton 2")
     }
     for (let i = 0; i != toolsCount.pickaxe; i++) {
-        toolsCount.pickaxe -= 1;
+        toolsCount.pickaxe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         button3.click(); 
         console.log("Clique sur bouton 3")
     }
     for (let i = 0; i != toolsCount.sword; i++) {
-        toolsCount.sword -= 1;
+        toolsCount.sword -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         button4.click(); 
         console.log("Clique sur bouton 4")
     }
-    updateAddCookie(0); 
+    // UPDATE VISUELLE
+    updateAddCookie(0);  
+    updatePower();
+    updatePrice();
 }
 
 function onStart(){
@@ -279,9 +284,6 @@ function onStart(){
 }
 
 
-
-
-// 🚦- Début du jeu et checkup nécessaires
 
 
 
@@ -304,15 +306,11 @@ switch(count){
 // 🧪 -  Main Et Fonctions principales du jeu :
 
 
-
-
-
 // 🍪 - Bouton Main Cookie +1;
 image.addEventListener('click', () => {
     image.classList.toggle('active');
-    console.log("Cookie clicked. Current count:", count);
+    // console.log("Cookie clicked. Current count:", count);
     updateAddCookie(1);
-   
 });
 
 // 💞 - Bouton Bonus +1/s
@@ -434,6 +432,6 @@ buttonWorld.addEventListener('click', () => {
 
 // START SCRIPT AFTER L'INITIALISATION 
 
-
+// 🚦- Début du jeu et checkup nécessaires
 
 onStart();
