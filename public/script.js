@@ -102,11 +102,11 @@ let interval; // Variable Interval
  // VISUEL
 
 
-function updateAddCookie(nombre) { // Ajoute un Nombre de Cookie et Update le compteur
+function updateAddCookie(nombre=0) { // Ajoute un Nombre de Cookie et Update le compteur
     let displayCount;
     count+=nombre;
     if (count >= 10000000) { // MILLIARDS
-        let millions = Math.floor(count / 10000000); 
+        let millions = Math.floor(count / 1000000000); 
         let temp = Math.floor((count % 10000000) / 100000); 
         displayCount = millions + "Md" + temp; 
     } 
@@ -257,6 +257,7 @@ function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS
         console.log("Clique sur bouton 2")
     }
     for (let i = 0; i != toolsCount.pickaxe; i++) {
+        // tools.pickaxes.lenght 
         toolsCount.pickaxe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
         sec-=pickaxePower;
         button3.click(); 
@@ -268,9 +269,9 @@ function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS
         button4.click(); 
         console.log("Clique sur bouton 4")
     }
+
     // UPDATE VISUELLE
-    updateAddCookie(0);  
-    
+    updateAddCookie();  
     updatePrice();
 }
 
@@ -280,7 +281,7 @@ function onStart(){
     }
     loadSave();
     retrieveTools();
-    updateAddCookie(0);
+    updateAddCookie();
     updatePrice();
     updatePower();
     console.log(toolsCount);
@@ -291,21 +292,23 @@ function onStart(){
 
 
 
-
-
-
 // Switch pour les prix des améliorations
 
 // 🚨 FONCTION DEPRECIE POUR LE CODE ACTUEL 🚨
-switch(count){
-    case count<10:
-        button.style.background = 'gray';
-        button2.style.background = 'gray';
-    case count === 10:
-        button.style.background = 'white';
-    case count === 100:
-        button2.style.background = 'white';
-};
+
+// switch(count){
+//     case count<10:
+//         button.style.background = 'gray';
+//         button2.style.background = 'gray';
+//     case count === 10:
+//         button.style.background = 'white';
+//     case count === 100:
+//         button2.style.background = 'white';
+// };
+
+
+
+
 
 // 🧪 -  Main Et Fonctions principales du jeu :
 
