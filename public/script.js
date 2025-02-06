@@ -84,14 +84,21 @@ let mine1Bool = false;
 let mine2Bool = false;
 let filonMineBool = false;
 
+let toolsCount = {
+    shovel,
+    axe,
+    pickaxe,
+    sword,
+}
+
 // ----------------------------------------\\
 
 
 
 
 // ------Variables Globales----------\\
-let count = 0; // COMPTEUR DES COOKIES
-let sec = 0.0; // COMPTEUR DES COOKIES PAR SECONDES 
+let count; // COMPTEUR DES COOKIES
+let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
 // --------Variables Unité De compatage-------\
@@ -121,7 +128,8 @@ function updateAddCookie(nombre) { // Ajoute un Nombre de Cookie et Update le co
         displayCount = count; 
     }
     countDiv.innerText = displayCount; 
-    document.getElementById('title').innerText = displayCount + cookieTitleCount; 
+    document.getElementById('title').innerText = displayCount + cookieTitleCount;
+    saveProgression();
 }
 
 function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
@@ -142,6 +150,7 @@ function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le comp
     }
     countDiv.innerText = displayCount; 
     document.getElementById('title').innerText = displayCount + cookieTitleCount; 
+    saveProgression();
 }
 
 
@@ -174,14 +183,109 @@ function updatePower(){
     power4.innerText = swordPower + secTitle;
 }
 
+function saveProgression() { // SAVE LA PROGRESSION
+    localStorage.setItem('cookieSec', sec);
+    localStorage.setItem('cookieCount', count);
+    localStorage.setItem('toolsCount.shovel', toolsCount.shovel);
+    localStorage.setItem('toolsCount.axe', toolsCount.axe);
+    localStorage.setItem('toolsCount.pickaxe', toolsCount.pickaxe);
+    localStorage.setItem('toolsCount.sword', toolsCount.sword);
+    localStorage.setItem('shovelPrice', shovelPrice);
+    localStorage.setItem('axePrice', axePrice);
+    localStorage.setItem('pickaxePrice', pickaxePrice);
+    localStorage.setItem('swordPrice', swordPrice);
+    localStorage.setItem('shovelPower', shovelPower);
+    localStorage.setItem('axePower', axePower);
+    localStorage.setItem('pickaxePower', pickaxePower);
+    localStorage.setItem('swordPower', swordPower);
+    localStorage.setItem('shovel', shovel);
+    localStorage.setItem('axe', axe);
+    localStorage.setItem('pickaxe', pickaxe);
+    localStorage.setItem('sword', sword);
+    localStorage.setItem('caveBool', caveBool);
+    localStorage.setItem('mine1Bool', mine1Bool);
+    localStorage.setItem('mine2Bool', mine2Bool);
+    localStorage.setItem('filonMineBool', filonMineBool);
+}
+function loadSave() { // LOAD SAUVEGARDE
+    count = parseInt(localStorage.getItem('cookieCount'), 10) || 0;
+    toolsCount.shovel = parseInt(localStorage.getItem('toolsCount.shovel'), 10) || 0;
+    toolsCount.axe = parseInt(localStorage.getItem('toolsCount.axe'), 10) || 0;
+    toolsCount.pickaxe = parseInt(localStorage.getItem('toolsCount.pickaxe'), 10) || 0;
+    toolsCount.sword = parseInt(localStorage.getItem('toolsCount.sword'), 10) || 0;
+    shovelPrice = parseInt(localStorage.getItem('shovelPrice'), 10) || 10;
+    axePrice = parseInt(localStorage.getItem('axePrice'), 10) || 100;
+    pickaxePrice = parseInt(localStorage.getItem('pickaxePrice'), 10) || 500;
+    swordPrice = parseInt(localStorage.getItem('swordPrice'), 10) || 1000;
+    shovelPower = parseInt(localStorage.getItem('shovelPower'), 10) || 1;
+    axePower = parseInt(localStorage.getItem('axePower'), 10) || 12;
+    pickaxePower = parseInt(localStorage.getItem('pickaxePower'), 10) || 77;
+    swordPower = parseInt(localStorage.getItem('swordPower'), 10) || 160;
+    shovel = localStorage.getItem('shovel') === 'true' || false;
+    axe = localStorage.getItem('axe') === 'true' || false;
+    pickaxe = localStorage.getItem('pickaxe') === 'true' || false;
+    sword = localStorage.getItem('sword') === 'true' || false;
+    caveBool = localStorage.getItem('caveBool') === 'true' || false;
+    mine1Bool = localStorage.getItem('mine1Bool') === 'true' || false;
+    mine2Bool = localStorage.getItem('mine2Bool') === 'true' || false;
+    filonMineBool = localStorage.getItem('filonMineBool') === 'true' || false;
+}
+function retrieveTools() {
+    let s;
+    let a;
+    let p;
+    let sw;
+    let total;
+    s = toolsCount.shovel * shovelPrice;
+    a = toolsCount.axe * axePrice;
+    p = toolsCount.pickaxe * pickaxePrice;
+    sw = toolsCount.sword * swordPrice;
+    total = s + a + p + sw; 
+    count += total;
+    for (let i = 0; i != toolsCount.shovel; i++) {
+        toolsCount.shovel -= 1;
+        button.click(); 
+        console.log("Clique sur bouton 1")
+    }
+    for (let i = 0; i != toolsCount.axe; i++) {
+        toolsCount.axe -= 1;
+        button2.click();
+        console.log("Clique sur bouton 2")
+    }
+    for (let i = 0; i != toolsCount.pickaxe; i++) {
+        toolsCount.pickaxe -= 1;
+        button3.click(); 
+        console.log("Clique sur bouton 3")
+    }
+    for (let i = 0; i != toolsCount.sword; i++) {
+        toolsCount.sword -= 1;
+        button4.click(); 
+        console.log("Clique sur bouton 4")
+    }
+    updateAddCookie(0); 
+}
+
+function onStart(){
+    if(count === 0){ // Si compteur à 0 affiche 0 cookies sur le titre
+        document.getElementById('title').innerText = cookieNone;
+    }
+    loadSave();
+    retrieveTools();
+    updateAddCookie(0);
+    updatePrice();
+    updatePower();
+    console.log(toolsCount);
+    console.log(count);
+}
+
 
 
 
 // 🚦- Début du jeu et checkup nécessaires
 
-if(count === 0){ // Si compteur à 0 affiche 0 cookies sur le titre
-    document.getElementById('title').innerText = cookieNone;
-}
+
+
+
 
 
 // Switch pour les prix des améliorations
@@ -198,9 +302,8 @@ switch(count){
 };
 
 // 🧪 -  Main Et Fonctions principales du jeu :
-updateAddCookie(0);
-updatePrice();
-updatePower()
+
+
 
 
 
@@ -219,6 +322,7 @@ button.addEventListener('click', () => {
         updateRmCookie(shovelPrice)
         sec += shovelPower;
         secDiv.innerText = sec +secTitle;
+        toolsCount.shovel += 1;
         interval = setInterval(() => {
             image.click();
             updateAddCookie(shovelPower-1);
@@ -236,6 +340,7 @@ button2.addEventListener('click', () => {
         updateRmCookie(axePrice)
         sec += axePower;
         secDiv.innerText = sec +secTitle;
+        toolsCount.axe += 1;
         interval = setInterval(() => {
             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
             updateAddCookie(axePower-1);// [2] - Ajouter 1 cookies pour Matcher avec la Valeur de Sec (1+1=2)
@@ -253,6 +358,7 @@ button3.addEventListener('click', () => {
         updateRmCookie(pickaxePrice)
         sec += pickaxePower;
         secDiv.innerText = sec +secTitle;
+        toolsCount.pickaxe += 1;
         interval = setInterval(() => {
             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
             updateAddCookie(pickaxePower-1); // [2] - Ajouter 4 cookies pour Matcher avec la Valeur de Sec (1+4=5)
@@ -270,6 +376,7 @@ button4.addEventListener('click', () => {
         updateRmCookie(swordPrice)
         sec += swordPower;
         secDiv.innerText = sec + secTitle;
+        toolsCount.sword += 1;
         interval = setInterval(() => {
             image.click();  // [1] - ANIMATION ET +1 AU COMPTEUR
             updateAddCookie(swordPower-1); // [2] - Ajouter 14 cookies pour Matcher avec la Valeur de Sec (1+14=15)
@@ -323,3 +430,10 @@ buttonWorld.addEventListener('click', () => {
     // Level Up for Mine
     
 });
+
+
+// START SCRIPT AFTER L'INITIALISATION 
+
+
+
+onStart();
