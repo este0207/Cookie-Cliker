@@ -246,27 +246,31 @@ function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS
     // SERIES DE BOUCLES FOR POUR SIMULER DES CLIQUES SUR LES BOUTONS
     for (let i = 0; i != toolsCount.shovel; i++) {
         toolsCount.shovel -= 1;  //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
+        sec-=shovelPower;
         button.click(); 
         console.log("Clique sur bouton 1")
     }
     for (let i = 0; i != toolsCount.axe; i++) {
         toolsCount.axe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
+        sec-=axePower;
         button2.click();
         console.log("Clique sur bouton 2")
     }
     for (let i = 0; i != toolsCount.pickaxe; i++) {
         toolsCount.pickaxe -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
+        sec-=pickaxePower;
         button3.click(); 
         console.log("Clique sur bouton 3")
     }
     for (let i = 0; i != toolsCount.sword; i++) {
         toolsCount.sword -= 1; //ENLEVER 1 CAR +=1 DANS LES BOUTONS (SUITE AU AJOUT TEMPORAIRE DE COOKIES)
+        sec-=swordPower;
         button4.click(); 
         console.log("Clique sur bouton 4")
     }
     // UPDATE VISUELLE
     updateAddCookie(0);  
-    updatePower();
+    
     updatePrice();
 }
 
