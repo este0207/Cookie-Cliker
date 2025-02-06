@@ -94,6 +94,9 @@ let count = 0; // COMPTEUR DES COOKIES
 let sec = 0.0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
+// --------Variables Unité De compatage-------\
+
+
 // let cps = 0; // Clique par seconde
 
 // ------------------------------------------\\
@@ -101,17 +104,47 @@ let interval; // Variable Interval
 
 // --- Fonctions GagneTemps --- \\
 
-function updateAddCookie(nombre){ // Ajoute un Nombre de Cookie et Update le compteur
-    count += nombre;
-    countDiv.innerText = count;
-    document.getElementById('title').innerText = count + cookieTitleCount;
+function updateAddCookie(nombre) { // Ajoute un Nombre de Cookie et Update le compteur
+    let displayCount;
+    count+=nombre;
+    if (count >= 10000000) {
+        let millions = Math.floor(count / 10000000); 
+        let temp = Math.floor((count % 10000000) / 100000); 
+        displayCount = millions + "Md" + temp; 
+    } 
+    else if (count >= 1000000) {
+        let millions = Math.floor(count / 1000000); 
+        let temp = Math.floor((count % 1000000) / 10000); 
+        displayCount = millions + "M" + temp; 
+    } 
+    else if(count<999999){
+        displayCount = count; 
+    }
+    countDiv.innerText = displayCount; 
+    document.getElementById('title').innerText = displayCount + cookieTitleCount; 
 }
 
 function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
-    count -= nombre;
-    countDiv.innerText = count;
-    document.getElementById('title').innerText = count + cookieTitleCount;
+    let displayCount;
+    count-=nombre;
+    if (count >= 10000000) {
+        let milliard = Math.floor(count / 10000000); 
+        let reste = Math.floor((count % 10000000) / 100000); 
+        displayCount = milliard + "Md" + reste; 
+    } 
+    else if (count >= 1000000) {
+        let millions = Math.floor(count / 1000000); 
+        let reste = Math.floor((count % 1000000) / 10000); 
+        displayCount = millions + "M" + reste; 
+    } 
+    else if(count<999999){
+        displayCount = count; 
+    }
+    countDiv.innerText = displayCount; 
+    document.getElementById('title').innerText = displayCount + cookieTitleCount; 
 }
+
+
 function updateBackground(){
     document.body.style.backgroundColor = '#808080';
     title.style.background = 'url(./images/stonetxt.jpg)';
@@ -174,6 +207,7 @@ updatePower()
 // 🍪 - Bouton Main Cookie +1;
 image.addEventListener('click', () => {
     image.classList.toggle('active');
+    console.log("Cookie clicked. Current count:", count);
     updateAddCookie(1);
    
 });
@@ -254,6 +288,7 @@ buttonWorld.addEventListener('click', () => {
     if(caveBool === false && mine1Bool === false && mine2Bool === false && filonMineBool === false){
         if(count>=cavePrice){
             if(shovel && axe && pickaxe && sword === true){
+                cavePrice*=2;
                 // caveBool=false;
                 shovel=false;
                 axe=false;
