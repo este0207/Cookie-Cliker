@@ -105,7 +105,7 @@ let interval; // Variable Interval
 function updateAddCookie(nombre=0) { // Ajoute un Nombre de Cookie et Update le compteur
     let displayCount;
     count+=nombre;
-    if (count >= 10000000) { // MILLIARDS
+    if (count >= 1000000000) { // MILLIARDS
         let millions = Math.floor(count / 1000000000); 
         let temp = Math.floor((count % 10000000) / 100000); 
         displayCount = millions + "Md" + temp; 
@@ -126,8 +126,8 @@ function updateAddCookie(nombre=0) { // Ajoute un Nombre de Cookie et Update le 
 function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
     let displayCount;
     count-=nombre;
-    if (count >= 10000000) { // MILLIARDS
-        let milliard = Math.floor(count / 10000000); 
+    if (count >= 1000000000) { // MILLIARDS
+        let milliard = Math.floor(count / 1000000000); 
         let reste = Math.floor((count % 10000000) / 100000); 
         displayCount = milliard + "Md" + reste; 
     } 
