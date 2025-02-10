@@ -1,158 +1,55 @@
-// GAME CODE : COOKIE CLICKER
-// LANGAGE : JAVASCRIPT
-// LANGUE : FRANCAIS ANGLAIS / FR / EN (0 IA UTILISEE ON EST JUSTE BILINGUE)
 
+// function updateAddCookie(nombre=0) { // Ajoute un Nombre de Cookie et Update le compteur
+//     let displayCount;
+//     count+=nombre;
+//     if (count >= 1000000000) { // MILLIARDS
+//         let millions = Math.floor(count / 1000000000); 
+//         let temp = Math.floor((count % 10000000) / 100000); 
+//         displayCount = millions + "Md" + temp; 
+//     } 
+//     else if (count >= 1000000) { // MILLIONS
+//         let millions = Math.floor(count / 1000000); 
+//         let temp = Math.floor((count % 1000000) / 10000); 
+//         displayCount = millions + "M" + temp; 
+//     } 
+//     else if(count<999999){ // BASIC
+//         displayCount = count; 
+//     }
+//     countDiv.innerText = displayCount; 
+//     document.getElementById('title').innerText = displayCount + cookieTitleCount;
+//     saveProgression();
+// }
 
-//  🗒️ - Constantes du Code : 
+// function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
+//     let displayCount;
+//     count-=nombre;
+//     if (count >= 1000000000) { // MILLIARDS
+//         let milliard = Math.floor(count / 1000000000); 
+//         let reste = Math.floor((count % 10000000) / 100000); 
+//         displayCount = milliard + "Md" + reste; 
+//     } 
+//     else if (count >= 1000000) { // MILLIONS
+//         let millions = Math.floor(count / 1000000); 
+//         let reste = Math.floor((count % 1000000) / 10000); 
+//         displayCount = millions + "M" + reste; 
+//     } 
+//     else if(count<999999){ // Basic
+//         displayCount = count; 
+//     }
+//     countDiv.innerText = displayCount; 
+//     document.getElementById('title').innerText = displayCount + cookieTitleCount; 
+//     saveProgression();
+// }
 
-
-// ------Constantes HTML--------\\
-const countDiv = document.getElementById('count');
-const secDiv = document.getElementById('sec');
-
-// Text :
-const text1 = document.getElementById('text1');
-const text2 = document.getElementById('text2');
-const text3 = document.getElementById('text3');
-const text4 = document.getElementById('text4');
-// Text Power
-const power1 = document.getElementById('power1');
-const power2 = document.getElementById('power2');
-const power3 = document.getElementById('power3');
-const power4 = document.getElementById('power4');
-// Images :
-const image = document.querySelector('.image');
-const image1 = document.getElementById("image1");
-const image2 = document.getElementById("image2");
-const image3 = document.getElementById("image3");
-const image4 = document.getElementById("image4");
-// Buttons :
-const buyShovelButton = document.querySelector('.container #add1');
-const buyAxeButton = document.querySelector('.container #add2');
-const buyPickaxeButton = document.querySelector('.container #add3');
-const buySwordButton = document.querySelector('.container #add4');
-const buttonWorld = document.querySelector('.container #levelup'); 
-
-const main = document.querySelector('.main .cookie'); // divs pour Front End
-const container = document.querySelector('.main .container'); // divs pour Front End
-
-// ------Constantes Strings---------\\
-const secTitle = "🍪/s";
-const cookieEmoji = "🍪";
-const cookieTitleCount = " Cookies - Cookie-Cliker";
-const cookieNone = "Cookies : none";
-// ----------------------------------------\\
-
-
-// -------Variables Objets et Class-------------\\
-
-// Amélioration Outils prix
-
-let shovelPrice = 10;
-let axePrice = 100; 
-let pickaxePrice = 500; 
-let swordPrice = 1000;
-
-// Amélioration Cookies/s 
-let shovelPower = 1; 
-let axePower = 12; 
-let pickaxePower = 77;
-let swordPower = 160;
-
-// Amélioration Niveau prix
-let cavePrice = 300000;
-let mine1Price = 1200000;
-let mine2Price = 2400000;
-let filonMinePrice = 4800000;
-let netherPrice= 9600000;
-
-
-// Boolean Activé ou non pour les améliorations
-let shovel = false;
-let axe = false;
-let pickaxe = false;
-let sword = false;
-
-
-// Boolean pour les mondes : 
-// let forestBool = false;
-let caveBool = false;
-let mine1Bool = false;
-let mine2Bool = false;
-let filonMineBool = false;
-
-let toolsCount = {
-    shovel,
-    axe,
-    pickaxe,
-    sword,
-}
-
-// ----------------------------------------\\
-
-
-// ------Variables Globales----------\\
-let count; // COMPTEUR DES COOKIES
-let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
-let interval; // Variable Interval
-
-
-// --- Fonctions GagneTemps --- \\
-
- // VISUEL
-
-
-function updateAddCookie(nombre=0) { // Ajoute un Nombre de Cookie et Update le compteur
-    let displayCount;
-    count+=nombre;
-    if (count >= 1000000000) { // MILLIARDS
-        let millions = Math.floor(count / 1000000000); 
-        let temp = Math.floor((count % 10000000) / 100000); 
-        displayCount = millions + "Md" + temp; 
-    } 
-    else if (count >= 1000000) { // MILLIONS
-        let millions = Math.floor(count / 1000000); 
-        let temp = Math.floor((count % 1000000) / 10000); 
-        displayCount = millions + "M" + temp; 
-    } 
-    else if(count<999999){ // BASIC
-        displayCount = count; 
-    }
-    countDiv.innerText = displayCount; 
-    document.getElementById('title').innerText = displayCount + cookieTitleCount;
-    saveProgression();
-}
-
-function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
-    let displayCount;
-    count-=nombre;
-    if (count >= 1000000000) { // MILLIARDS
-        let milliard = Math.floor(count / 1000000000); 
-        let reste = Math.floor((count % 10000000) / 100000); 
-        displayCount = milliard + "Md" + reste; 
-    } 
-    else if (count >= 1000000) { // MILLIONS
-        let millions = Math.floor(count / 1000000); 
-        let reste = Math.floor((count % 1000000) / 10000); 
-        displayCount = millions + "M" + reste; 
-    } 
-    else if(count<999999){ // Basic
-        displayCount = count; 
-    }
-    countDiv.innerText = displayCount; 
-    document.getElementById('title').innerText = displayCount + cookieTitleCount; 
-    saveProgression();
-}
-
-function updateBackground(){ // UPDATE SHOP, COOKIE BG, TEXT
-    document.body.style.backgroundColor = '#808080';
-    title.style.background = 'url(./images/stonetxt.jpg)';
-    main.style.background = 'url(./images/cave.png)';
-    main.style.backgroundRepeat = 'no-repeat'
-    main.style.backgroundPosition = 'center',
-    main.style.backgroundSize = 'cover',
-    container.style.background = 'url(./images/stonetxt.jpg)';
-}
+// function updateBackground(){ // UPDATE SHOP, COOKIE BG, TEXT
+//     document.body.style.backgroundColor = '#808080';
+//     title.style.background = 'url(./images/stonetxt.jpg)';
+//     main.style.background = 'url(./images/cave.png)';
+//     main.style.backgroundRepeat = 'no-repeat'
+//     main.style.backgroundPosition = 'center',
+//     main.style.backgroundSize = 'cover',
+//     container.style.background = 'url(./images/stonetxt.jpg)';
+// }
 
 function updateTools(){ // UPDATE TOOLS VISUAL
     image1.setAttribute("src", "./images/stone-shovel.png")
