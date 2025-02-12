@@ -1,6 +1,6 @@
 let global = {
 count: 0, // COMPTEUR DES COOKIES
 cookiePerSec: 0,// COMPTEUR DES COOKIES PAR SECONDES 
-interval, // Variable Interval
+ // Variable Interval
 }
 export { global }

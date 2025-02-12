@@ -12,7 +12,7 @@ import { Buttons } from "../../view/components/Buttons.js";
 import { Update } from "../../view/ui/update/update.js";
 
 class Cookies {
-    save() {
+    static save() {
         localStorage.setItem('cookieCount', global.count);
         localStorage.setItem('cookieSec', global.cookiePerSec);
         localStorage.setItem('AxeCount',Axe.properties.count);
@@ -36,7 +36,7 @@ class Cookies {
         localStorage.setItem('FilonBool', Filon.properties.status);
         localStorage.setItem('NetherBool', Nether.properties.status);
     }
-    load(){
+    static load(){
         global.count = parseInt(localStorage.getItem('cookieCount'), 10) || 0;
         global.cookiePerSec = parseInt(localStorage.getItem('cookieSec'), 10) || 0;
         Axe.properties.count = parseInt(localStorage.getItem('AxeCount'), 10) || 0;

@@ -1,3 +1,17 @@
+import { Start } from "./src/service/game/Start.js";
+
+
+
+Start.game();
+
+
+
+
+
+
+
+
+
 
 // function updateAddCookie(nombre=0) { // Ajoute un Nombre de Cookie et Update le compteur
 //     let displayCount;
@@ -194,106 +208,65 @@
 
 
 // 💞 - Bouton Bonus +2/s
-buyAxeButton.addEventListener('click', () => {
-    if(count>=axePrice){
-        axe = true;
-        updateRmCookie(axePrice)
-        sec += axePower;
-        secDiv.innerText = sec +secTitle;
-        toolsCount.axe += 1;
-        interval = setInterval(() => {
-            image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
-            updateAddCookie(axePower-1);// [2] - Ajouter 1 cookies pour Matcher avec la Valeur de Sec (1+1=2)
-        }, 1000);
-    }
-    else if(count<axePrice){
-        window.alert("Pas assez de Cookies !");
-    }
-});
+// buyAxeButton.addEventListener('click', () => {
+//     if(count>=axePrice){
+//         axe = true;
+//         updateRmCookie(axePrice)
+//         sec += axePower;
+//         secDiv.innerText = sec +secTitle;
+//         toolsCount.axe += 1;
+//         interval = setInterval(() => {
+//             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
+//             updateAddCookie(axePower-1);// [2] - Ajouter 1 cookies pour Matcher avec la Valeur de Sec (1+1=2)
+//         }, 1000);
+//     }
+//     else if(count<axePrice){
+//         window.alert("Pas assez de Cookies !");
+//     }
+// });
 
-// 💞 - Bouton Bonus +5/s
-buyPickaxeButton.addEventListener('click', () => {
-    if(count>=pickaxePrice){
-        pickaxe = true;
-        updateRmCookie(pickaxePrice)
-        sec += pickaxePower;
-        secDiv.innerText = sec +secTitle;
-        toolsCount.pickaxe += 1;
-        interval = setInterval(() => {
-            image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
-            updateAddCookie(pickaxePower-1); // [2] - Ajouter 4 cookies pour Matcher avec la Valeur de Sec (1+4=5)
-        }, 1000);
-    }
-    else if(count<pickaxePrice){
-        window.alert("Pas assez de Cookies !");
-    }
-});
+// // 💞 - Bouton Bonus +5/s
+// buyPickaxeButton.addEventListener('click', () => {
+//     if(count>=pickaxePrice){
+//         pickaxe = true;
+//         updateRmCookie(pickaxePrice)
+//         sec += pickaxePower;
+//         secDiv.innerText = sec +secTitle;
+//         toolsCount.pickaxe += 1;
+//         interval = setInterval(() => {
+//             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
+//             updateAddCookie(pickaxePower-1); // [2] - Ajouter 4 cookies pour Matcher avec la Valeur de Sec (1+4=5)
+//         }, 1000);
+//     }
+//     else if(count<pickaxePrice){
+//         window.alert("Pas assez de Cookies !");
+//     }
+// });
 
-// 💞 - Bouton Bonus +15/s
-buySwordButton.addEventListener('click', () => {
-    if(count>=swordPrice){
-        sword = true;
-        updateRmCookie(swordPrice)
-        sec += swordPower;
-        secDiv.innerText = sec + secTitle;
-        toolsCount.sword += 1;
-        interval = setInterval(() => {
-            image.click();  // [1] - ANIMATION ET +1 AU COMPTEUR
-            updateAddCookie(swordPower-1); // [2] - Ajouter 14 cookies pour Matcher avec la Valeur de Sec (1+14=15)
-        }, 1000);
-    }
-    else if(count<swordPrice){
-        window.alert("Pas assez de Cookies !");
-    }
-});
+// // 💞 - Bouton Bonus +15/s
+// buySwordButton.addEventListener('click', () => {
+//     if(count>=swordPrice){
+//         sword = true;
+//         updateRmCookie(swordPrice)
+//         sec += swordPower;
+//         secDiv.innerText = sec + secTitle;
+//         toolsCount.sword += 1;
+//         interval = setInterval(() => {
+//             image.click();  // [1] - ANIMATION ET +1 AU COMPTEUR
+//             updateAddCookie(swordPower-1); // [2] - Ajouter 14 cookies pour Matcher avec la Valeur de Sec (1+14=15)
+//         }, 1000);
+//     }
+//     else if(count<swordPrice){
+//         window.alert("Pas assez de Cookies !");
+//     }
+// });
 
 
 // Bouton Level Up
-buttonWorld.addEventListener('click', () => { 
-    // Function Pattern for Level Up 
-    // Cave Level UP
-    if(caveBool === false && mine1Bool === false && mine2Bool === false && filonMineBool === false){
-        if(count>=cavePrice){
-            if(shovel && axe && pickaxe && sword === true){
-                cavePrice*=2;
-                // caveBool=false;
-                shovel=false;
-                axe=false;
-                pickaxe=false;
-                sword=false;
-                // Change Price Outils
-                shovelPrice*=2;
-                axePrice*=2;
-                pickaxePrice*=2;
-                swordPrice*=2;
-                // x2 sur les gains des outils !! :
-                shovelPower*=2;
-                axePower*=2;
-                pickaxePower*=2;
-                swordPower*=2;
-                // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
-                updateRmCookie(cavePrice);
-                  // Update visuel
-                updateBackground();
-                updateTools();
-                updatePrice();
-                updatePower()
-            }
-            else{
-                window.alert("Vous Avez assez d'argent mais pas tout les outils !");
-            };
-        }
-    else if(count<cavePrice){
-        window.alert("Pas assez de Cookies !");
-        }
-    }
-    // Level Up for Mine
-    
-});
+
 
 
 // START SCRIPT AFTER L'INITIALISATION 
 
 // 🚦- Début du jeu et checkup nécessaires
 
-onStart();
