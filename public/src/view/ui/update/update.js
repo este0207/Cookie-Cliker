@@ -1,6 +1,11 @@
 import { counters } from "../../components/counters.js";
 import { strings } from "../../../scope/constants/strings.js";
 import { Images } from "../images.js";
+import {Statistics} from "../../components/Statistics.js";
+import { Axe } from "../../../model/tools/class/Axe.js";
+import { Pickaxe } from "../../../model/tools/class/Pickaxe.js";
+import { Sword } from "../../../model/tools/class/Sword.js";
+import { Shovel } from "../../../model/tools/class/Shovel.js";
 
 class Update {
     displayCount;
@@ -54,8 +59,46 @@ Update.Ui = class {
         Images.imageElement.cookieBackground.backgroundSize = 'cover',
         Images.imageElement.boutiqueContainer.style.background = 'url(./images/stonetxt.jpg)';
     }
-    price(){
-        
+    price() {
+        Statistics.price.shovelTag.innerText = Shovel.properties.price + cookieEmoji;
+        Statistics.price.axeTag.innerText = Axe.properties.price + cookieEmoji;
+        Statistics.price.pickaxeTag.innerText = Pickaxe.properties.price + cookieEmoji;
+        Statistics.price.swordTag.innerText = Sword.properties.price + cookieEmoji;
+    }
+    tools(material){
+        if(material==="stone"){
+        Images.imageElement.shovel.setAttribute("src", "../../../public/images/Stone-Shovel.webp")
+        Images.imageElement.axe.setAttribute("src", "./images/Stone-Axe.webp")
+        Images.imageElement.pickaxe.setAttribute("src", "./images/Stone-Pickaxe.webp")
+        Images.imageElement.sword.setAttribute("src", "./images/Stone-Sword.webp")
+    }
+    if(material==="stone"){
+        Images.imageElement.shovel.setAttribute("src", "./images/Stone-Shovel.webp")
+        Images.imageElement.axe.setAttribute("src", "./images/Stone-Axe.webp")
+        Images.imageElement.pickaxe.setAttribute("src", "./images/Stone-Pickaxe.webp")
+        Images.imageElement.sword.setAttribute("src", "./images/Stone-Sword.webp")
+    }
+    if(material==="stone"){
+        Images.imageElement.shovel.setAttribute("src", "./images/Stone-Shovel.webp")
+        Images.imageElement.axe.setAttribute("src", "./images/Stone-Axe.webp")
+        Images.imageElement.pickaxe.setAttribute("src", "./images/Stone-Pickaxe.webp")
+        Images.imageElement.sword.setAttribute("src", "./images/Stone-Sword.webp")
+    }
+    if(material==="stone"){
+        Images.imageElement.shovel.setAttribute("src", "./images/Stone-Shovel.webp")
+        Images.imageElement.axe.setAttribute("src", "./images/Stone-Axe.webp")
+        Images.imageElement.pickaxe.setAttribute("src", "./images/Stone-Pickaxe.webp")
+        Images.imageElement.sword.setAttribute("src", "./images/Stone-Sword.webp")
+    }
+}
+    power() {
+        Statistics.power.shovelTag.innerText = Shovel.properties.power + cookiePerSec;
+        Statistics.power.axeTag.innerText = Axe.properties.power + cookiePerSec;
+        Statistics.power.pickaxeTag.innerText = Pickaxe.properties.power + cookiePerSec;
+        Statistics.power.swordTag.innerText = Sword.properties.power + cookiePerSec;
     }
 
+
 }
+
+export {Update}
